@@ -37,6 +37,54 @@ const dataPenjualanNovel = [
   },
 ];
 
-function getInfoPenjualan(dataPenjualan) {}
+function getInfoPenjualan(dataPenjualan) {
+  let totalKeuntungan = 0;
+  let totalModal = 0;
+  let produkBukuTerlaris = 0;
+  let indexBukuTerlaris = 0;
+  let penulisTerlaris = {};
+  let namaPenulisTerlaris = "";
+  let maxPenulis = 0;
+  const formatter = new Intl.NumberFormat("id-ID", {
+    style: "currency",
+    currency: "IDR",
+  });
+
+  for (let i = 0; i < dataPenjualan.length; i++) {
+    const buku = dataPenjualan[i];
+    totalKeuntungan += (buku.hargaJual - buku.hargaBeli) * buku.totalTerjual;
+    totalModal += (buku.totalTerjual + buku.sisaStok) * buku.hargaBeli;
+    // PRODUK TERLARIS
+    if (produkBukuTerlaris < buku.totalTerjual) {
+      produkBukuTerlaris = buku.totalTerjual;
+      indexBukuTerlaris = i;
+    }
+    // PENULIS TERLARIS
+    if (buku.penulis in penulisTerlaris) {
+      penulisTerlaris[buku.penulis] += 1;
+    } else {
+      penulisTerlaris[buku.penulis] = 1;
+    }
+  }
+
+  for (const key in penulisTerlaris) {
+    if (Object.hasOwnProperty.call(penulisTerlaris, key)) {
+      const element = penulisTerlaris[key];
+      if (maxPenulis < element) {
+        maxPenulis = element;
+        namaPenulisTerlaris = key;
+      }
+    }
+  }
+
+  return {
+    totalKeuntungan: formatter.format(totalKeuntungan),
+    totalModal: formatter.format(totalModal),
+    persentaseKeuntungan:
+      Math.round((totalKeuntungan / totalModal) * 100) + "%",
+    produkBukuTerlaris: dataPenjualan[indexBukuTerlaris].namaProduk,
+    penulisTerlaris: namaPenulisTerlaris,
+  };
+}
 
 console.log(getInfoPenjualan(dataPenjualanNovel));

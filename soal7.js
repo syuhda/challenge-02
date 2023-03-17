@@ -25,6 +25,16 @@ const dataPenjualanPakAldi = [
   },
 ];
 
-function hitungTotalPenjualan(dataPenjualan) {}
+function hitungTotalPenjualan(dataPenjualan) {
+  let hitung = 0;
+  for (let i = 0; i < dataPenjualan.length; i++) {
+    if (Object.hasOwnProperty.call(dataPenjualanPakAldi[i], "totalTerjual")) {
+      hitung = hitung + dataPenjualanPakAldi[i].totalTerjual;
+    } else {
+      break;
+    }
+  }
+  return hitung;
+}
 
 console.log(hitungTotalPenjualan(dataPenjualanPakAldi));
