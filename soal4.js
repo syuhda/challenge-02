@@ -9,9 +9,9 @@ function isValidPassword(givenPassword) {
   return output;
 }
 
-console.log(isValidPassword("Meong2021"));
-console.log(isValidPassword("meong2021"));
-console.log(isValidPassword("@eong"));
-console.log(isValidPassword("Meong2"));
-console.log(isValidPassword(0));
-console.log(isValidPassword());
+console.log(isValidPassword("Meong2021")); // EXPECTED OUTPUT => true
+console.log(isValidPassword("meong2021")); // EXPECTED OUTPUT => false
+console.log(isValidPassword("@eong")); // EXPECTED OUTPUT => false
+console.log(isValidPassword("Meong2")); // EXPECTED OUTPUT => false
+console.log(isValidPassword(0)); // EXPECTED OUTPUT => ERROR dikarenakan tidak sesuai aturan regex dan hanya berisi satu digit angka
+console.log(isValidPassword()); // EXPECTED OUTPUT => ERROR dikarenakan tidak terdapat argumen yang diisi/kosong
