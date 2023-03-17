@@ -1,9 +1,6 @@
 const getSplitName = (personName = "") => {
-  //   const [firstName, midName, lastName] = personName.split(" ").filter(Boolean);
   // const [firstName, middleName, lastName] = personName.split(" ");
   // middleName = lastName ? middleName : null;
-  // lastName =
-  // console.log(firstName, middleName, lastName);
   // return {
   //   firstName,
   //   middleName: lastName == null ? null : middleName,
@@ -44,5 +41,5 @@ const getSplitName = (personName = "") => {
 console.log(getSplitName("Aldi Daniela Pranata"));
 console.log(getSplitName("Dwi Kuncoro"));
 console.log(getSplitName("Aurora"));
-console.log(getSplitName("Aurora Aureliya Sukma Darma"));
-console.log(getSplitName(0));
+console.log(getSplitName("Aurora Aureliya Sukma Darma")); // EXPECTED OUTPUT => Error: This function is only for 3 characters name
+console.log(getSplitName(0)); // EXPECTED OUTPUT => ERROR

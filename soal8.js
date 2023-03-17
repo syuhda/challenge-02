@@ -52,7 +52,9 @@ function getInfoPenjualan(dataPenjualan) {
 
   for (let i = 0; i < dataPenjualan.length; i++) {
     const buku = dataPenjualan[i];
+    // TOTAL KEUNTUNGAN
     totalKeuntungan += (buku.hargaJual - buku.hargaBeli) * buku.totalTerjual;
+    // TOTAL MODAL
     totalModal += (buku.totalTerjual + buku.sisaStok) * buku.hargaBeli;
     // PRODUK TERLARIS
     if (produkBukuTerlaris < buku.totalTerjual) {
@@ -78,12 +80,12 @@ function getInfoPenjualan(dataPenjualan) {
   }
 
   return {
-    totalKeuntungan: formatter.format(totalKeuntungan),
-    totalModal: formatter.format(totalModal),
+    totalKeuntungan: formatter.format(totalKeuntungan), // Harus dalam format rupiah
+    totalModal: formatter.format(totalModal), // Harus dalam format rupiah
     persentaseKeuntungan:
-      Math.round((totalKeuntungan / totalModal) * 100) + "%",
-    produkBukuTerlaris: dataPenjualan[indexBukuTerlaris].namaProduk,
-    penulisTerlaris: namaPenulisTerlaris,
+      Math.round((totalKeuntungan / totalModal) * 100) + "%", // berdasarkan totalModal dan totalJual
+    produkBukuTerlaris: dataPenjualan[indexBukuTerlaris].namaProduk, // namaProduct yang paling banyak dijual
+    penulisTerlaris: namaPenulisTerlaris, // nam penulis yang bukunya paling banyak dijual
   };
 }
 

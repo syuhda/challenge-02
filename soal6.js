@@ -12,7 +12,7 @@ function getAngkaTerbesarKedua(dataNumbers) {
 
 const dataAngka = [9, 4, 7, 7, 4, 3, 2, 2, 8];
 
-console.log(getAngkaTerbesarKedua(dataAngka));
+console.log(getAngkaTerbesarKedua(dataAngka)); // EXPECTED OUTPUT => 8
 
-console.log(getAngkaTerbesarKedua(0));
-console.log(getAngkaTerbesarKedua());
+console.log(getAngkaTerbesarKedua(0)); // EXPECTED OUTPUT => ERROR karena argumen yang diterima hanyalah dalam bentuk array
+console.log(getAngkaTerbesarKedua()); // EXPECTED OUTPUT => ERROR dikarenakan tidak terdapat argumen yang diisi/kosong
